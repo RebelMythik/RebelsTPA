@@ -3,16 +3,28 @@ version: '1.0-SNAPSHOT'
 main: rebelmythik.rebelsTPA.RebelsTPA
 api-version: '1.20'
 authors: [ RebelMythik, CaveRaider ]
-description: Simple teleportation plugin
+description: Teleportation, RTP, and Home plugin
 
 commands:
   tpa:
+    permission: rtpa.tpa
+
   tpaccept:
+
   tpadeny:
+
   tpablock:
+
   tpahere:
+
   tpall:
+
   sethome:
+
   home:
+
   delhome:
+
+  rtpareload:
+    permission: rtpa.admin.reload
 

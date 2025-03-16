@@ -1,4 +1,4 @@
 package rebelmythik.rebelsTPA.utils;
 
-public class ChatFormatter {
+public class PlayerInformation {
 }

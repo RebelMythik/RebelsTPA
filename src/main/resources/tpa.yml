@@ -1,0 +1,6 @@
+tpa:
+  enabled: true
+  groups:
+    default:
+      cooldown: -1
+      max-distance:
