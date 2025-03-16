@@ -18,6 +18,7 @@ commands:
   tpahere:
 
   tpall:
+    permission: rtpa.admin.tpall
 
   sethome:
 

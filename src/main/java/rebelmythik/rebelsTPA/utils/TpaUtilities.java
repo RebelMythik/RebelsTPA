@@ -21,7 +21,6 @@ public class TpaUtilities {
     public static FileConfiguration rtpConfig;
     public static FileConfiguration tpaConfig;
 
-    private static File rtpFile;
 
     public static void createConfigs(JavaPlugin javaPlugin) {
         messagesConfig = createConfig(javaPlugin, "messages.yml");
