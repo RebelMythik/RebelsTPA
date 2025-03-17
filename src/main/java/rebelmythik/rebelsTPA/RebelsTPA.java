@@ -4,9 +4,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 import rebelmythik.rebelsTPA.commands.ReloadCommand;
 import rebelmythik.rebelsTPA.commands.tpa.TpAllCommand;
 import rebelmythik.rebelsTPA.commands.tpa.TpaCommand;
+import rebelmythik.rebelsTPA.database.DatabaseManager;
 import rebelmythik.rebelsTPA.utils.TpaUtilities;
 
 public final class RebelsTPA extends JavaPlugin {
+
+    private DatabaseManager databaseManager;
 
     @Override
     public void onEnable() {
@@ -19,10 +22,16 @@ public final class RebelsTPA extends JavaPlugin {
         saveDefaultConfig();
         TpaUtilities.createConfigs(this);
 
+        databaseManager = new DatabaseManager();
+        databaseManager.connect();
+
+
+
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        databaseManager.disconnect();
     }
 }
