@@ -14,8 +14,9 @@ public class TpAllCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!cmd.getName().equalsIgnoreCase("tpall")) return false;
         if (!TpaUtilities.tpaConfig.getBoolean("tpa.enabled")) return false;
+        if (!cmd.getName().equalsIgnoreCase("tpall")) return false;
+
         if (!(sender instanceof Player)) return false;
 
         if(args.length == 1 && args[0].equalsIgnoreCase("here")) {

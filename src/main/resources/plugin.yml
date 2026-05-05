@@ -6,8 +6,10 @@ authors: [ RebelMythik, CaveRaider ]
 description: Teleportation, RTP, and Home plugin
 
 commands:
+  tp:
+    permission: rtpa.tp
   tpa:
-    permission: rtpa.tpa
+    #permission: rtpa.tpa
 
   tpaccept:
 
