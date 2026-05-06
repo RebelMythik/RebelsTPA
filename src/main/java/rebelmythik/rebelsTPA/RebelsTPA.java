@@ -16,7 +16,7 @@ public final class RebelsTPA extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         getCommand("tpa").setExecutor(new TpaCommand(this));
-        getCommand("tpall").setExecutor(new TpAllCommand());
+        getCommand("tpall").setExecutor(new TpAllCommand(this));
         getCommand("rtpa").setExecutor(new ReloadCommand(this));
         getCommand("tp").setExecutor(new TpCommand(this));
 

@@ -15,7 +15,7 @@ public class DatabaseManager {
             connection = DriverManager.getConnection(url);
 
             // Create table if it doesn't exist
-            String sql = "CREATE TABLE IF NOT EXISTS homes (" +
+            String sqlHome = "CREATE TABLE IF NOT EXISTS homes (" +
                     "uuid TEXT NOT NULL," +
                     "home_name TEXT NOT NULL," +
                     "world TEXT NOT NULL," +
@@ -27,13 +27,18 @@ public class DatabaseManager {
                     "PRIMARY KEY (uuid, home_name)" +
                     ");";
 
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            String sqlBack = "";
+
+            String sqlBlock = "";
+
+            try (PreparedStatement statement = connection.prepareStatement(sqlHome)) {
                 statement.execute();
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 
     public void disconnect() {

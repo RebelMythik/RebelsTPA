@@ -31,7 +31,7 @@ public class TpaCommand implements CommandExecutor {
                 player.sendMessage(ChatColor.RED + "Not a person");
                 return false;
             }
-            // Command has been run properly, time to rock
+
             player.teleport(target.getLocation());
 
 
