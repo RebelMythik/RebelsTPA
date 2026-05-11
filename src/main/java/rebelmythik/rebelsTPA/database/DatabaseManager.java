@@ -27,11 +27,33 @@ public class DatabaseManager {
                     "PRIMARY KEY (uuid, home_name)" +
                     ");";
 
-            String sqlBack = "";
+            // Table for back command
+            String sqlBack = "CREATE TABLE IF NOT EXISTS back_locations (" +
+                    "uuid TEXT PRIMARY KEY," +
+                    "world TEXT NOT NULL," +
+                    "x DOUBLE NOT NULL," +
+                    "y DOUBLE NOT NULL," +
+                    "z DOUBLE NOT NULL," +
+                    "yaw FLOAT NOT NULL," +
+                    "pitch FLOAT NOT NULL" +
+                    ");";
 
-            String sqlBlock = "";
+            // Table for tpa block
+            String sqlBlock = "CREATE TABLE IF NOT EXISTS tpa_blocks (" +
+                    "uuid TEXT NOT NULL," +
+                    "blocked_uuid TEXT NOT NULL," +
+                    "PRIMARY KEY (uuid, blocked_uuid)" +
+                    ");";
 
             try (PreparedStatement statement = connection.prepareStatement(sqlHome)) {
+                statement.execute();
+            }
+
+            try (PreparedStatement statement = connection.prepareStatement(sqlBack)) {
+                statement.execute();
+            }
+
+            try (PreparedStatement statement = connection.prepareStatement(sqlBlock)) {
                 statement.execute();
             }
 
@@ -43,19 +65,18 @@ public class DatabaseManager {
 
     public void disconnect() {
         try {
-            if (connection != null) {
+            if (connection != null && !connection.isClosed()) {
                 connection.close();
             }
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
 
     // Sethome
     public void addHome(String uuid, String homeName, String world, double x, double y, double z, float yaw, float pitch) {
-        String sql = "INSERT INTO homes (uuid, home_name, world, x, y, z, yaw, pitch) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT OR REPLACE INTO homes (uuid, home_name, world, x, y, z, yaw, pitch) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, uuid);
@@ -72,7 +93,7 @@ public class DatabaseManager {
         }
     }
 
-    public boolean getHome(String uuid, String homeName) {
+    public boolean homeExists(String uuid, String homeName) {
         String sql = "SELECT COUNT(*) FROM homes WHERE uuid = ? AND home_name = ?;";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
