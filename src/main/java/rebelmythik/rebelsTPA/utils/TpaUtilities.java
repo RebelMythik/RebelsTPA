@@ -47,7 +47,7 @@ public class TpaUtilities {
         homeConfig = YamlConfiguration.loadConfiguration(new File("homes.yml"));
         rtpConfig = YamlConfiguration.loadConfiguration(new File("rtp.yml"));
         tpaConfig = YamlConfiguration.loadConfiguration(new File("tpa.yml"));
-    };
+    }
 
     public static void registerGroupPermissions() {
 
