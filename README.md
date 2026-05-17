@@ -15,5 +15,4 @@ This plugin is designed to be an easy to configure, but semi-advanced tp plugin.
 |/back|rebelstpa.back|false
 |/tpaall|rebeltstpa.tpaall|false
 |/tp|rebelstpa.tp|false
-|||
-|||
+|/rtpa reload|rebelstpa.reload|false
