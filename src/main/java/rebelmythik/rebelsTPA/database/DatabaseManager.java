@@ -38,12 +38,6 @@ public class DatabaseManager {
                     "pitch FLOAT NOT NULL" +
                     ");";
 
-            // Table for tpa block
-            String sqlBlock = "CREATE TABLE IF NOT EXISTS tpa_blocks (" +
-                    "uuid TEXT NOT NULL," +
-                    "blocked_uuid TEXT NOT NULL," +
-                    "PRIMARY KEY (uuid, blocked_uuid)" +
-                    ");";
 
             try (PreparedStatement statement = connection.prepareStatement(sqlHome)) {
                 statement.execute();
@@ -53,9 +47,6 @@ public class DatabaseManager {
                 statement.execute();
             }
 
-            try (PreparedStatement statement = connection.prepareStatement(sqlBlock)) {
-                statement.execute();
-            }
 
         } catch (SQLException e) {
             e.printStackTrace();
