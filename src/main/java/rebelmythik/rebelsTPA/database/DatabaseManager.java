@@ -14,19 +14,6 @@ public class DatabaseManager {
             String url = "jdbc:sqlite:plugins/RebelsTPA/database.db";
             connection = DriverManager.getConnection(url);
 
-            // Create table if it doesn't exist
-            String sqlHome = "CREATE TABLE IF NOT EXISTS homes (" +
-                    "uuid TEXT NOT NULL," +
-                    "home_name TEXT NOT NULL," +
-                    "world TEXT NOT NULL," +
-                    "x DOUBLE NOT NULL," +
-                    "y DOUBLE NOT NULL," +
-                    "z DOUBLE NOT NULL," +
-                    "yaw FLOAT NOT NULL," +
-                    "pitch FLOAT NOT NULL," +
-                    "PRIMARY KEY (uuid, home_name)" +
-                    ");";
-
             // Table for back command
             String sqlBack = "CREATE TABLE IF NOT EXISTS back_locations (" +
                     "uuid TEXT PRIMARY KEY," +
@@ -38,10 +25,6 @@ public class DatabaseManager {
                     "pitch FLOAT NOT NULL" +
                     ");";
 
-
-            try (PreparedStatement statement = connection.prepareStatement(sqlHome)) {
-                statement.execute();
-            }
 
             try (PreparedStatement statement = connection.prepareStatement(sqlBack)) {
                 statement.execute();
