@@ -24,8 +24,6 @@ public class TpaUtilities {
 
     public static void createConfigs(JavaPlugin javaPlugin) {
         messagesConfig = createConfig(javaPlugin, "messages.yml");
-        homeConfig = createConfig(javaPlugin, "homes.yml");
-        rtpConfig = createConfig(javaPlugin, "rtp.yml");
         tpaConfig = createConfig(javaPlugin, "tpa.yml");
     };
 
@@ -44,8 +42,6 @@ public class TpaUtilities {
 
     public static void reloadConfigs() {
         messagesConfig = YamlConfiguration.loadConfiguration(new File("messages.yml"));
-        homeConfig = YamlConfiguration.loadConfiguration(new File("homes.yml"));
-        rtpConfig = YamlConfiguration.loadConfiguration(new File("rtp.yml"));
         tpaConfig = YamlConfiguration.loadConfiguration(new File("tpa.yml"));
     }
 
